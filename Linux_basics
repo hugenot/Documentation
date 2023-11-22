@@ -1,0 +1,7 @@
+
+Linux Basics
+
+### How To Find Out My Linux Distribution Name and Version
+cat /proc/version
+
+

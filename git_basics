@@ -1,0 +1,14 @@
+### Create a folder for this project on your local hard drive
+mkdir <new_project>
+
+### change into this folder
+$ cd <new_project>
+
+### initialize a new, empty Git repository here
+git init
+
+#4: add all changes to the next (= first) commit
+git add .
+
+### commit
+git commit -m "Initial commit"

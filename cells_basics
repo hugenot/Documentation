@@ -1,0 +1,36 @@
+### shutdown or reboot cellserver
+
+cellcli -e list griddisk attributes name,asmmodestatus,asmdeactivationoutcome
+cellcli -e list griddisk
+
+shutdown -F -r now / shutdown -F now
+
+cellcli -e alter griddisk all active
+                ### if not all are active
+                ### in Cell
+                cellcli -e list griddisk attributes name,asmmodestatus,asmdeactivationoutcome | grep -v ONLINE
+                ### in VM
+                su - grid
+                sqlplus / as sysasm
+                alter diskgroup <DATA01/RECO01> online all;
+
+                ### oder HIDDEN Parameter auf dem Cell eintragen:
+                vi /opt/oracle/cell23.1.7.0.0_LINUX.X64_231012/cellsrv/deploy/config/cellinit.ora
+                _cell_db_unique_name_check=false                  <- in die Datei ^^ eintragen.
+                cellcli
+                alter cell events="immediate cellsrv.cellsrv_setparam('_cell_db_unique_name_check',false)"
+
+cellcli -e list griddisk
+cellcli -e list griddisk attributes name,asmmodestatus,asmdeactivationoutcome
+
+###
+https://docs.broadcom.com/doc/12352476
+
+### show all virtual drives on controller
+/opt/MegaRAID/storcli/storcli64 /c0/vall show
+
+### set all virtual drives on controller to WriteBack
+/opt/MegaRAID/storcli/storcli64 /c0/vall set wrcache=WB
+
+### set all virtual drives on controller to WriteThrough
+/opt/MegaRAID/storcli/storcli64 /c0/vall set wrcache=WT

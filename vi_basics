@@ -1,0 +1,10 @@
+vi
+
+### search
+	/string	    -> search forward for string
+ 	n	          -> next forward
+ 	N	          -> next backward
+
+### show line numbers
+  :set nu	    -> show line numbers 
+  :set nonu	  -> hide line numbers 

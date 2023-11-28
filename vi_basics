@@ -8,3 +8,6 @@ vi
 ### show line numbers
   :set nu		-> show line numbers 
   :set nonnu		-> hide line numbers 
+
+Summary:
+https://docs.oracle.com/cd/E19253-01/806-7612/6jgfmsvqn/index.html

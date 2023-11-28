@@ -1,0 +1,6 @@
+### sqlpus 
+
+### set column size
+column <COL_NAME> Format a15
+col <COL_NAME> for a15
+
